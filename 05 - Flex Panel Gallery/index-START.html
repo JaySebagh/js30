@@ -46,7 +46,6 @@
       background-position: center;
       flex: 1;
       justify-content: center;
-      align-items: center;
       display: flex;
       flex-direction: column;
     }
@@ -68,10 +67,10 @@
       align-items: center;
     }
 
-    .panel > *:first-child{transform: translateY(-100%);}
-    .panel.open-active > *:first-child{transform:translateY(0);}
-    .panel > *:last-child{transform: translateY(-100%);}
-    .panel.open-active > *:last-child{transform:translateY(0);}
+    .panel > *:first-child { transform: translateY(-100%); }
+    .panel.open-active > *:first-child { transform: translateY(0); }
+    .panel > *:last-child { transform: translateY(100%); }
+    .panel.open-active > *:last-child { transform: translateY(0); }
 
     .panel p {
       text-transform: uppercase;
@@ -89,6 +88,11 @@
       font-size: 40px;
     }
 
+    @media only screen and (max-width: 600px) {
+      .panel p {
+        font-size: 1em;
+      }
+    }
   </style>
 
 
@@ -136,7 +140,7 @@
     }
 
     panels.forEach(panel => panel.addEventListener("click", toggleOpen));
-    panels.forEach(panel => panel.addEventListener("transitioned", toggleActive));
+    panels.forEach(panel => panel.addEventListener("transitionend", toggleActive));
   </script>
 
 
